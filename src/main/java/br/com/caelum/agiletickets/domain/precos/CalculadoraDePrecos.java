@@ -9,13 +9,13 @@ public class CalculadoraDePrecos {
 	public static BigDecimal calcula(Sessao sessao, Integer quantidade) {
 		BigDecimal preco;
 		
-		preco = calculaPrecoDoIngresso(sessao);
+		preco = sessao.getPreco().add(sessao.getPreco().multiply(retornaAcrescimo(sessao)));
 
 		return preco.multiply(BigDecimal.valueOf(quantidade));
 	}
 	
 	private static BigDecimal retornaAcrescimo(Sessao sessao){
-		BigDecimal percentualDeAcrescimo = BigDecimal.valueOf(0);
+		BigDecimal percentualDeAcrescimo = BigDecimal.ZERO;
 		switch (sessao.getEspetaculo().getTipo()){
 			case CINEMA:
 			case SHOW: 
@@ -38,11 +38,4 @@ public class CalculadoraDePrecos {
 		return percentualDeAcrescimo;
 		
 	}
-
-	private static BigDecimal calculaPrecoDoIngresso(Sessao sessao) {
-		BigDecimal preco;
-		preco = sessao.getPreco().add(sessao.getPreco().multiply(retornaAcrescimo(sessao)));
-		return preco;
-	}
-
 }
