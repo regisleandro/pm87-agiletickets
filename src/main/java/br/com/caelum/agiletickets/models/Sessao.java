@@ -26,7 +26,7 @@ public class Sessao {
 	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	private DateTime inicio;
 
-	private Integer duracaoEmMinutos;
+	private Integer duracaoEmMinutos = 0;
 
 	private Integer totalIngressos = 0;
 
@@ -111,4 +111,10 @@ public class Sessao {
 		return preco;
 	}
 	
+	public Boolean ehPrimeiros(){
+		if ((this.getTotalIngressos() - this.getIngressosReservados()) / this.getTotalIngressos().doubleValue() <= 0.50){
+			return true;
+		} 
+		return false;
+	}
 }

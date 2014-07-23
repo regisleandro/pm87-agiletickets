@@ -12,7 +12,7 @@ public class SessaoTestDataBuilder {
 	private BigDecimal preco;
 	private int totalIngressos;
 	private int ingressosReservados;
-	private Integer duracaoEmMinutos;
+	private int duracaoEmMinutos;
 
 	public static SessaoTestDataBuilder umaSessao() {
 		return new SessaoTestDataBuilder();
