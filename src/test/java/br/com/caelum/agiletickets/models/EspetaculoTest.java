@@ -155,7 +155,7 @@ public class EspetaculoTest {
 		
 		Espetaculo espetaculo = new Espetaculo();
 		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, semanal);
-		assertEquals(2, lista.size());
+		assertEquals(1, lista.size());
 		assertEquals(inicio.toDateTime(horario), lista.get(0).getInicio());		
 	}
 }
