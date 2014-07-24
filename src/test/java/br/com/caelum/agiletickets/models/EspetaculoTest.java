@@ -117,6 +117,7 @@ public class EspetaculoTest {
 		}
 	}
 	
+	@Test
 	public void deveCriar1SessaoParaDatasIguaisEPeriodicidadeSemanal(){
 		LocalDate inicio = new LocalDate();
 		LocalDate fim = inicio;
@@ -143,5 +144,18 @@ public class EspetaculoTest {
 			assertEquals(inicio.toDateTime(horario), s.getInicio());
 			inicio = inicio.plusWeeks(1);
 		}
+	}
+	
+	@Test
+	public void deveCriar1SessaoParaPeriodoMenorQue1SemanaEPeriodicidadeSemanal(){
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = inicio.plusDays(3);
+		LocalTime horario = new LocalTime();
+		Periodicidade semanal = Periodicidade.SEMANAL;
+		
+		Espetaculo espetaculo = new Espetaculo();
+		List<Sessao> lista = espetaculo.criaSessoes(inicio, fim, horario, semanal);
+		assertEquals(1, lista.size());
+		assertEquals(inicio.toDateTime(horario), lista.get(0).getInicio());		
 	}
 }
