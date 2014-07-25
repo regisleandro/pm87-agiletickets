@@ -22,7 +22,7 @@ public class ReservaTest {
 	
 	@After
 	public void tearDown(){
-	//	browser.close();
+		browser.close();
 	}
 	
 	@Test
@@ -37,10 +37,9 @@ public class ReservaTest {
 		String urlLink = link.getAttribute("href");
 		
 		browser.get(urlLink);
-		WebElement form = browser.findElement(By.tagName("form"));
-		WebElement inputQuantidade = form.findElement(By.id("qtde"));
+		WebElement inputQuantidade = browser.findElement(By.id("qtde"));
 		inputQuantidade.sendKeys("1");
-		form.submit();
+		inputQuantidade.submit();
 		
 		WebElement mensagem = browser.findElement(By.id("message"));
 		String mensagemSucesso = mensagem.getText();
